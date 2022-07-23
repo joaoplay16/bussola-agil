@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rolling Compass</string>
+    <string name="app_name">Bússola Ágil</string>
     <string name="north">N</string>
     <string name="northeast">NE</string>
-    <string name="east">E</string>
+    <string name="east">L</string>
     <string name="southeast">SE</string>
     <string name="south">S</string>
-    <string name="west">W</string>
-    <string name="southwest">SW</string>
-    <string name="northwest">NW</string>
+    <string name="southwest">SO</string>
+    <string name="west">O</string>
+    <string name="northwest">NO</string>
 </resources>
