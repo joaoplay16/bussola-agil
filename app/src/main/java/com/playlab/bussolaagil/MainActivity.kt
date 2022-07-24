@@ -12,13 +12,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
@@ -39,28 +38,36 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContent {
             BussolaAgilTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = { Text(stringResource(R.string.app_name)) },
+                            backgroundColor = MaterialTheme.colors.primary,
+                        )
+                    }
                 ) {
-                    Column(
+
+                    Surface(
                         modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         ) {
 
-                        Text(
-                            modifier = Modifier.padding(16.dp),
-                            text = getDirectionsLabel(degrees.value),
-                            color = MaterialTheme.colors.onBackground,
-                            fontSize = 20.sp
-                        )
-                        CompassAnimationStyled(
-                            degrees = degrees.value,
-                            size = 250.dp
-                        )
-                        CompassAnimation(
-                            degrees = degrees.value,
-                        )
+                            Text(
+                                modifier = Modifier.padding(16.dp),
+                                text = getDirectionsLabel(degrees.value),
+                                color = MaterialTheme.colors.onBackground,
+                                fontSize = 20.sp
+                            )
+                            CompassAnimationStyled(
+                                degrees = degrees.value,
+                                size = 250.dp
+                            )
+
+                        }
                     }
                 }
             }

@@ -2,7 +2,9 @@ package com.playlab.bussolaagil.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val BlueGray200 = Color(0xFFb0bec5)
+val BlueGray400 = Color(0xFF808e95)
+val LightPink = Color(0xFFffe4d2)
+val LightBlue = Color(0xFFe2f1f8)
+val DarkGrey900 = Color(0xFF2e2e2e)
+val Black800 = Color(0xFF2b2b2b)
