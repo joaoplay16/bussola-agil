@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                 modifier = Modifier.padding(16.dp),
                                 text = getDirectionsLabel(degrees.value),
                                 color = MaterialTheme.colors.onBackground,
-                                fontSize = 20.sp
+                                style = MaterialTheme.typography.h2
                             )
                             CompassAnimationStyled(
                                 degrees = degrees.value,
