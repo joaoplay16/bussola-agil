@@ -17,6 +17,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.playlab.bussolaagil.components.DialogAlert
@@ -57,7 +58,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
                             Text(
                                 modifier = Modifier.padding(16.dp),
-                                text = getDirectionsLabel(degrees.value),
+                                text = getDirectionsLabel(LocalContext.current, degrees.value),
                                 color = MaterialTheme.colors.onBackground,
                                 style = MaterialTheme.typography.h2
                             )
