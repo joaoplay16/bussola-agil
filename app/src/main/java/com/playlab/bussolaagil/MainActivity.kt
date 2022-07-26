@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.playlab.bussolaagil.components.DialogAlert
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
 import com.playlab.bussolaagil.util.getDirectionsLabel
 import kotlin.math.roundToInt
@@ -46,7 +46,6 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                         )
                     }
                 ) {
-
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                     ) {
@@ -67,6 +66,9 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                                 size = 250.dp
                             )
 
+                            if(sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null) {
+                                DialogAlert(stringResource(R.string.missing_sensor_error))
+                            }
                         }
                     }
                 }
@@ -74,6 +76,8 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         }
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
+
+
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
         // Do something here if sensor accuracy changes.
@@ -105,6 +109,8 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                 SensorManager.SENSOR_DELAY_GAME
             )
         }
+
+
     }
 
     override fun onPause() {

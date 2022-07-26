@@ -9,4 +9,5 @@
     <string name="southwest">SO</string>
     <string name="west">O</string>
     <string name="northwest">NO</string>
+    <string name="missing_sensor_error">Este dispositivo não possui o sensor de campo magnético, a bussola não irá funcionar.</string>
 </resources>
