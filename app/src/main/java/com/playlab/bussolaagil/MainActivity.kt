@@ -8,21 +8,21 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.playlab.bussolaagil.components.DialogAlert
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.playlab.bussolaagil.screens.ScreenRoutes
+import com.playlab.bussolaagil.screens.home.HomeScreen
+import com.playlab.bussolaagil.screens.widget.WidgetScreen
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
-import com.playlab.bussolaagil.util.getDirectionsLabel
 import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity(), SensorEventListener {
@@ -47,37 +47,36 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                         )
                     }
                 ) {
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                    ) {
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-
-                            Text(
-                                modifier = Modifier.padding(16.dp),
-                                text = getDirectionsLabel(LocalContext.current, degrees.value),
-                                color = MaterialTheme.colors.onBackground,
-                                style = MaterialTheme.typography.h2
-                            )
-                            CompassAnimationStyled(
-                                degrees = degrees.value,
-                                size = 250.dp
-                            )
-
-                            if(sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null) {
-                                DialogAlert(stringResource(R.string.missing_sensor_error))
-                            }
-                        }
-                    }
+                    DefaultNavHost()
                 }
             }
         }
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
+    @Composable
+    fun DefaultNavHost(
+        navController: NavHostController = rememberNavController()
+    ) {
+        NavHost(
+            modifier = Modifier,
+            navController = navController,
+            startDestination = ScreenRoutes.Home.name,
+        ){
+            composable(ScreenRoutes.Home.name){
+                HomeScreen(degrees = degrees.value, sensorManager = sensorManager) {
+                    CompassAnimationStyled(
+                        degrees = degrees.value,
+                        size = 250.dp
+                    )
+                }
+            }
+
+            composable(ScreenRoutes.WidgetSelection.name){
+                WidgetScreen()
+            }
+        }
+    }
 
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
