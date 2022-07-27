@@ -6,19 +6,21 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.playlab.bussolaagil.components.Widgets
+import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
 import com.playlab.bussolaagil.screens.ScreenRoutes
 import com.playlab.bussolaagil.screens.home.HomeScreen
 import com.playlab.bussolaagil.screens.widget.WidgetScreen
@@ -37,6 +39,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             BussolaAgilTheme {
                 Scaffold(
@@ -47,10 +50,12 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                         )
                     }
                 ) {
+
                     DefaultNavHost()
                 }
             }
         }
+
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
@@ -61,23 +66,32 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         NavHost(
             modifier = Modifier,
             navController = navController,
-            startDestination = ScreenRoutes.Home.name,
+            startDestination = ScreenRoutes.WidgetSelection.name,
         ){
             composable(ScreenRoutes.Home.name){
                 HomeScreen(degrees = degrees.value, sensorManager = sensorManager) {
-                    CompassAnimationStyled(
-                        degrees = degrees.value,
-                        size = 250.dp
-                    )
+                    val dataStore = PreferencesDataStore(LocalContext.current)
+                    val selectedWidget by dataStore.getWidgetName.collectAsState(initial = null)
+
+                    when(selectedWidget){
+                        Widgets.MinimalCompass.name ->
+                            CompassAnimation(
+                                degrees = degrees.value,
+                                canvasSize = 250.dp
+                            )
+                        else -> CompassAnimationStyled(
+                            degrees = degrees.value,
+                            size = 250.dp
+                        )
+                    }
                 }
             }
 
             composable(ScreenRoutes.WidgetSelection.name){
-                WidgetScreen()
+                WidgetScreen(navController)
             }
         }
     }
-
 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
         // Do something here if sensor accuracy changes.
