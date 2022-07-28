@@ -13,8 +13,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.playlab.bussolaagil.CompassAnimation
-import com.playlab.bussolaagil.CompassAnimationStyled
+import com.playlab.bussolaagil.MinimalCompass
+import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.R
 import com.playlab.bussolaagil.components.Widgets
 import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
@@ -42,14 +42,14 @@ fun WidgetScreen(navController: NavController?) {
                 name = Widgets.MinimalCompass.name,
                 navController = navController,
             ) {
-                CompassAnimation()
+                MinimalCompass()
             }
 
             CompassWidget(
                 name = Widgets.StyledCompass.name,
                 navController = navController,
             ) {
-                CompassAnimationStyled()
+                StyledCompass()
             }
         }
     }

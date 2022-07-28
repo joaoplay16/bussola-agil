@@ -6,7 +6,6 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.*
@@ -19,6 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.components.Widgets
 import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
 import com.playlab.bussolaagil.screens.ScreenRoutes
@@ -75,11 +75,11 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
                     when(selectedWidget){
                         Widgets.MinimalCompass.name ->
-                            CompassAnimation(
+                            MinimalCompass(
                                 degrees = degrees.value,
                                 canvasSize = 250.dp
                             )
-                        else -> CompassAnimationStyled(
+                        else -> StyledCompass(
                             degrees = degrees.value,
                             size = 250.dp
                         )
