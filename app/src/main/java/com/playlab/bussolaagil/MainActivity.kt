@@ -65,9 +65,10 @@ class MainActivity : ComponentActivity(), SensorEventListener {
             startDestination = ScreenRoutes.Home.name,
         ){
             composable(ScreenRoutes.Home.name){
+                val isMagneticFieldSensorPresent = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null
                 HomeScreen(
                     degrees = degrees.value,
-                    sensorManager = sensorManager,
+                    isMagneticFieldSensorPresent = isMagneticFieldSensorPresent,
                     navController = navController
                 ) {
                     val dataStore = PreferencesDataStore(LocalContext.current)

@@ -23,7 +23,7 @@ import com.playlab.bussolaagil.util.getDirectionsLabel
 @Composable
 fun HomeScreen(
     degrees: Int,
-    sensorManager: SensorManager,
+    isMagneticFieldSensorPresent: Boolean,
     navController: NavController,
     compassComposable: @Composable () -> Unit
     ) {
@@ -62,7 +62,7 @@ fun HomeScreen(
 
                 compassComposable()
 
-                if (sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null) {
+                if (!isMagneticFieldSensorPresent) {
                     DialogAlert(stringResource(R.string.missing_sensor_error))
                 }
             }
