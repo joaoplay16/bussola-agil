@@ -31,8 +31,7 @@ fun WidgetScreen(navController: NavController?) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            val dataStore = PreferencesDataStore(LocalContext.current)
-            
+
             Text(
                 text = stringResource(R.string.widget),
                 style = MaterialTheme.typography.button,
@@ -42,7 +41,6 @@ fun WidgetScreen(navController: NavController?) {
             CompassWidget(
                 name = Widgets.MinimalCompass.name,
                 navController = navController,
-                dataStore = dataStore
             ) {
                 CompassAnimation()
             }
@@ -50,7 +48,6 @@ fun WidgetScreen(navController: NavController?) {
             CompassWidget(
                 name = Widgets.StyledCompass.name,
                 navController = navController,
-                dataStore = dataStore
             ) {
                 CompassAnimationStyled()
             }
@@ -62,9 +59,9 @@ fun WidgetScreen(navController: NavController?) {
 fun CompassWidget(
     name: String,
     navController: NavController?,
-    dataStore: PreferencesDataStore,
     composable: @Composable () -> Unit
 ) {
+    val dataStore = PreferencesDataStore(LocalContext.current)
     Box (
         Modifier
             .clickable {
