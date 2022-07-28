@@ -32,7 +32,7 @@ fun BussolaAgilTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compo
     }
 
     val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(colors.primaryVariant)
+    systemUiController.setStatusBarColor(colors.surface)
 
     MaterialTheme(
         colors = colors,

@@ -8,11 +8,17 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -42,17 +48,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
         setContent {
             BussolaAgilTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = { Text(stringResource(R.string.app_name)) },
-                            backgroundColor = MaterialTheme.colors.primary,
-                        )
-                    }
-                ) {
-
-                    DefaultNavHost()
-                }
+                DefaultNavHost()
             }
         }
 
@@ -66,10 +62,14 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         NavHost(
             modifier = Modifier,
             navController = navController,
-            startDestination = ScreenRoutes.WidgetSelection.name,
+            startDestination = ScreenRoutes.Home.name,
         ){
             composable(ScreenRoutes.Home.name){
-                HomeScreen(degrees = degrees.value, sensorManager = sensorManager) {
+                HomeScreen(
+                    degrees = degrees.value,
+                    sensorManager = sensorManager,
+                    navController = navController
+                ) {
                     val dataStore = PreferencesDataStore(LocalContext.current)
                     val selectedWidget by dataStore.getWidgetName.collectAsState(initial = null)
 

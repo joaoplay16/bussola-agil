@@ -11,4 +11,5 @@
     <string name="northwest">NO</string>
     <string name="missing_sensor_error">Este dispositivo não possui o sensor de campo magnético, a bussola não irá funcionar.</string>
     <string name="widget">WIDGET</string>
+    <string name="menu">Menu</string>
 </resources>
