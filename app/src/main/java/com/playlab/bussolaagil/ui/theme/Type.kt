@@ -1,6 +1,8 @@
 package com.playlab.bussolaagil.ui.theme
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -29,5 +31,11 @@ val Typography = Typography(
         fontFamily = FontFamily(Font(R.font.pt_sans_caption_regular)),
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-    )
+    ),
+    button = TextStyle(
+        fontFamily = FontFamily(Font(R.font.noto_sans_medium)),
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+    ),
+
 )

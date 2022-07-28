@@ -10,4 +10,5 @@
     <string name="southwest">SW</string>
     <string name="northwest">NW</string>
     <string name="missing_sensor_error">This device does not have a magnetic field sensor, the compass will not work.</string>
+    <string name="widget">WIDGET</string>
 </resources>
