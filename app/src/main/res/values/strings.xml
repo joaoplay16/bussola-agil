@@ -12,4 +12,5 @@
     <string name="missing_sensor_error">This device does not have a magnetic field sensor, the compass will not work.</string>
     <string name="widget">WIDGET</string>
     <string name="menu">Menu</string>
+    <string name="back">Back</string>
 </resources>

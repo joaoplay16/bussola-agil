@@ -8,22 +8,15 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.playlab.bussolaagil.components.MinimalCompass
 import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.components.Widgets
 import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
@@ -78,11 +71,11 @@ class MainActivity : ComponentActivity(), SensorEventListener {
                         Widgets.MinimalCompass.name ->
                             MinimalCompass(
                                 degrees = degrees.value,
-                                canvasSize = 250.dp
+                                canvasSize = 300.dp
                             )
                         else -> StyledCompass(
                             degrees = degrees.value,
-                            size = 250.dp
+                            size = 300.dp
                         )
                     }
                 }

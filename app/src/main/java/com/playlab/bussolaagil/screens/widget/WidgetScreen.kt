@@ -1,10 +1,12 @@
 package com.playlab.bussolaagil.screens.widget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.playlab.bussolaagil.MinimalCompass
+import com.playlab.bussolaagil.components.MinimalCompass
 import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.R
 import com.playlab.bussolaagil.components.Widgets
@@ -25,31 +27,50 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun WidgetScreen(navController: NavController?) {
-    Surface() {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-
-            Text(
-                text = stringResource(R.string.widget),
-                style = MaterialTheme.typography.button,
-                color = MaterialTheme.colors.onSurface.copy(0.7f)
-            )
-
-            CompassWidget(
-                name = Widgets.MinimalCompass.name,
-                navController = navController,
+    Scaffold(
+        topBar = {
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colors.surface),
             ) {
-                MinimalCompass()
+                Icon(
+                    modifier = Modifier.padding(16.dp)
+                        .clickable {
+                            navController?.popBackStack()
+                        },
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = stringResource(R.string.back)
+                )
             }
-
-            CompassWidget(
-                name = Widgets.StyledCompass.name,
-                navController = navController,
+        }
+    ) {
+        Surface() {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                StyledCompass()
+
+                Text(
+                    text = stringResource(R.string.widget),
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.onSurface.copy(0.7f)
+                )
+
+                CompassWidget(
+                    name = Widgets.MinimalCompass.name,
+                    navController = navController,
+                ) {
+                    MinimalCompass()
+                }
+
+                CompassWidget(
+                    name = Widgets.StyledCompass.name,
+                    navController = navController,
+                ) {
+                    StyledCompass()
+                }
             }
         }
     }
