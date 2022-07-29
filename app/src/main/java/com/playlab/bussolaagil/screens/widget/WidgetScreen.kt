@@ -135,7 +135,7 @@ fun CompassWidget(
                 CoroutineScope(Dispatchers.IO).launch {
                     dataStore.saveWidgetName(name)
                 }
-                navController?.navigate(ScreenRoutes.Home.name)
+                navController?.popBackStack()
             }
     ){
         composable()
