@@ -14,9 +14,9 @@
         android:theme="@style/Theme.BussolaAgil"
         tools:targetApi="31">
         <activity
+            android:screenOrientation="locked"
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.BussolaAgil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
