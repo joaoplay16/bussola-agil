@@ -28,7 +28,6 @@ import com.playlab.bussolaagil.components.MinimalCompass
 import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.components.Widgets
 import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
-import com.playlab.bussolaagil.screens.ScreenRoutes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -53,11 +52,12 @@ fun WidgetScreen(navController: NavController?) {
                 )
             }
         }
-    ) {
+    ) { padding ->
         Surface() {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .padding(padding)
                     .verticalScroll(
                         state = rememberScrollState(),
                     ),
