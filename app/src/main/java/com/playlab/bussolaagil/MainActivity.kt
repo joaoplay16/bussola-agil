@@ -39,50 +39,17 @@ class MainActivity : ComponentActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        val isMagneticFieldSensorPresent =
+            sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null
+
         setContent {
             BussolaAgilTheme {
-                DefaultNavHost()
-            }
-        }
-
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    }
-
-    @Composable
-    fun DefaultNavHost(
-        navController: NavHostController = rememberNavController()
-    ) {
-        NavHost(
-            modifier = Modifier,
-            navController = navController,
-            startDestination = ScreenRoutes.Home.name,
-        ){
-            composable(ScreenRoutes.Home.name){
-                val isMagneticFieldSensorPresent = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null
-                HomeScreen(
+                DefaultNavHost(
                     degrees = degrees.value,
-                    isMagneticFieldSensorPresent = isMagneticFieldSensorPresent,
-                    navController = navController
-                ) {
-                    val dataStore = PreferencesDataStore(LocalContext.current)
-                    val selectedWidget by dataStore.getWidgetName.collectAsState(initial = null)
-
-                    when(selectedWidget){
-                        Widgets.MinimalCompass.name ->
-                            MinimalCompass(
-                                degrees = degrees.value,
-                                canvasSize = 300.dp
-                            )
-                        else -> StyledCompass(
-                            degrees = degrees.value,
-                            size = 300.dp
-                        )
-                    }
-                }
-            }
-
-            composable(ScreenRoutes.WidgetSelection.name){
-                WidgetScreen(navController)
+                    isMagneticFieldSensorPresent = isMagneticFieldSensorPresent
+                )
             }
         }
     }
@@ -162,6 +129,48 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         SensorManager.getOrientation(rotationMatrix, mOrientationAngles)
 
         // "mOrientationAngles" now has up-to-date information.
+    }
+}
+
+
+@Composable
+fun DefaultNavHost(
+    modifier: Modifier = Modifier,
+    degrees: Int,
+    navController: NavHostController = rememberNavController(),
+    isMagneticFieldSensorPresent: Boolean
+) {
+    NavHost(
+        modifier = modifier,
+        navController = navController,
+        startDestination = ScreenRoutes.Home.name,
+    ){
+        composable(ScreenRoutes.Home.name){
+            HomeScreen(
+                degrees = degrees,
+                isMagneticFieldSensorPresent = isMagneticFieldSensorPresent,
+                navController = navController
+            ) {
+                val dataStore = PreferencesDataStore(LocalContext.current)
+                val selectedWidget by dataStore.getWidgetName.collectAsState(initial = null)
+
+                when(selectedWidget){
+                    Widgets.MinimalCompass.name ->
+                        MinimalCompass(
+                            degrees = degrees,
+                            canvasSize = 300.dp
+                        )
+                    else -> StyledCompass(
+                        degrees = degrees,
+                        size = 300.dp
+                    )
+                }
+            }
+        }
+
+        composable(ScreenRoutes.WidgetSelection.name){
+            WidgetScreen(navController)
+        }
     }
 }
 
