@@ -33,7 +33,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
-fun WidgetScreen(navController: NavController?) {
+fun WidgetScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController?,
+) {
     Scaffold(
         topBar = {
             Row(
@@ -55,7 +58,7 @@ fun WidgetScreen(navController: NavController?) {
     ) { padding ->
         Surface() {
             Column(
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxSize()
                     .padding(padding)
                     .verticalScroll(
@@ -124,6 +127,7 @@ fun WidgetScreen(navController: NavController?) {
 
 @Composable
 fun CompassWidget(
+    modifier: Modifier = Modifier,
     name: String,
     navController: NavController?,
     composable: @Composable () -> Unit
@@ -146,6 +150,6 @@ fun CompassWidget(
 @Composable
 fun PreviewWidgetScreen() {
     Surface() {
-        WidgetScreen(null)
+        WidgetScreen(navController = null)
     }
 }

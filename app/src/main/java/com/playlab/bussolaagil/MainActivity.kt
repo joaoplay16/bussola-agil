@@ -169,7 +169,7 @@ fun DefaultNavHost(
         }
 
         composable(ScreenRoutes.WidgetSelection.name){
-            WidgetScreen(navController)
+            WidgetScreen(navController =  navController)
         }
     }
 }

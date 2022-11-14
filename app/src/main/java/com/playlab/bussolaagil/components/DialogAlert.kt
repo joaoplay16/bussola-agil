@@ -6,12 +6,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 
 @Composable
-fun DialogAlert(text: String) {
+fun DialogAlert(
+    modifier: Modifier = Modifier,
+    text: String) {
 
     var showDialog by remember {
         mutableStateOf(true)
@@ -21,6 +22,7 @@ fun DialogAlert(text: String) {
             onDismissRequest = { showDialog = false },
         ) {
             Card(
+                modifier = modifier,
                 backgroundColor = MaterialTheme.colors.surface,
                 elevation = 4.dp
             ) {
