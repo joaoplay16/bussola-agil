@@ -138,12 +138,13 @@ fun DefaultNavHost(
     modifier: Modifier = Modifier,
     degrees: Int,
     navController: NavHostController = rememberNavController(),
+    startDestination: String = ScreenRoutes.Home.name,
     isMagneticFieldSensorPresent: Boolean
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = ScreenRoutes.Home.name,
+        startDestination = startDestination,
     ){
         composable(ScreenRoutes.Home.name){
             HomeScreen(
