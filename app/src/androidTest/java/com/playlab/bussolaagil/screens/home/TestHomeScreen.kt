@@ -1,4 +1,4 @@
-package com.playlab.bussolaagil.screens
+package com.playlab.bussolaagil.screens.home
 
 import android.content.Context
 import androidx.compose.ui.platform.LocalContext
@@ -11,7 +11,6 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.platform.app.InstrumentationRegistry
 import com.playlab.bussolaagil.DefaultNavHost
 import com.playlab.bussolaagil.R
-import com.playlab.bussolaagil.screens.home.HomeScreen
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
 import org.junit.Rule
 import org.junit.Test
