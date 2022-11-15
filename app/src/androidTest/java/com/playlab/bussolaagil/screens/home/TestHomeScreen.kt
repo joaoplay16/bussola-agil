@@ -11,6 +11,7 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.platform.app.InstrumentationRegistry
 import com.playlab.bussolaagil.DefaultNavHost
 import com.playlab.bussolaagil.R
+import com.playlab.bussolaagil.screens.ScreenRoutes
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
 import org.junit.Rule
 import org.junit.Test
@@ -34,7 +35,7 @@ class TestHomeScreen {
                 HomeScreen(
                     degrees = 0,
                     isMagneticFieldSensorPresent = false,
-                    navController = navController) {}
+                    onMenuClick = {navController.navigate(ScreenRoutes.WidgetSelection.name)}) {}
             }
         }
 

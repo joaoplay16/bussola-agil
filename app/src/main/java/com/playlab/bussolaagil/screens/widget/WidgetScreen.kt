@@ -21,21 +21,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.playlab.bussolaagil.BuildConfig
 import com.playlab.bussolaagil.R
 import com.playlab.bussolaagil.components.MinimalCompass
 import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.components.Widgets
-import com.playlab.bussolaagil.data.preferences.PreferencesDataStore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @Composable
 fun WidgetScreen(
     modifier: Modifier = Modifier,
-    navController: NavController?,
+    onArrowBackClick: () -> Unit = {},
+    onWidgetChoose: (String) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -48,7 +44,7 @@ fun WidgetScreen(
                     modifier = Modifier
                         .padding(16.dp)
                         .clickable {
-                            navController?.popBackStack()
+                            onArrowBackClick()
                         },
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.back)
@@ -76,7 +72,7 @@ fun WidgetScreen(
 
                 CompassWidget(
                     name = Widgets.MinimalCompass.name,
-                    navController = navController,
+                    onWidgetChoose = onWidgetChoose,
                 ) {
                     MinimalCompass()
                 }
@@ -85,7 +81,7 @@ fun WidgetScreen(
 
                 CompassWidget(
                     name = Widgets.StyledCompass.name,
-                    navController = navController,
+                    onWidgetChoose = onWidgetChoose
                 ) {
                     StyledCompass(size = 250.dp)
                 }
@@ -129,18 +125,11 @@ fun WidgetScreen(
 fun CompassWidget(
     modifier: Modifier = Modifier,
     name: String,
-    navController: NavController?,
+    onWidgetChoose: (String) -> Unit = {},
     composable: @Composable () -> Unit
 ) {
-    val dataStore = PreferencesDataStore(LocalContext.current)
     Box (
-        Modifier
-            .clickable {
-                CoroutineScope(Dispatchers.IO).launch {
-                    dataStore.saveWidgetName(name)
-                }
-                navController?.popBackStack()
-            }
+        modifier.clickable { onWidgetChoose(name) }
     ){
         composable()
     }
@@ -150,6 +139,6 @@ fun CompassWidget(
 @Composable
 fun PreviewWidgetScreen() {
     Surface() {
-        WidgetScreen(navController = null)
+        WidgetScreen()
     }
 }

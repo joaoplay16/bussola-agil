@@ -24,6 +24,7 @@ import com.playlab.bussolaagil.screens.ScreenRoutes
 import com.playlab.bussolaagil.screens.home.HomeScreen
 import com.playlab.bussolaagil.screens.widget.WidgetScreen
 import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity(), SensorEventListener {
@@ -150,7 +151,7 @@ fun DefaultNavHost(
             HomeScreen(
                 degrees = degrees,
                 isMagneticFieldSensorPresent = isMagneticFieldSensorPresent,
-                navController = navController
+                onMenuClick = { navController.navigate(ScreenRoutes.WidgetSelection.name )}
             ) {
                 val dataStore = PreferencesDataStore(LocalContext.current)
                 val selectedWidget by dataStore.getWidgetName.collectAsState(initial = null)
@@ -170,7 +171,20 @@ fun DefaultNavHost(
         }
 
         composable(ScreenRoutes.WidgetSelection.name){
-            WidgetScreen(navController =  navController)
+            val dataStore = PreferencesDataStore(LocalContext.current)
+
+            val coroutineScope = rememberCoroutineScope()
+
+            WidgetScreen(
+                onArrowBackClick = { navController.popBackStack() },
+                onWidgetChoose = { name ->
+                    coroutineScope.launch {
+                        dataStore.saveWidgetName(name)
+                    }
+
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }

@@ -12,10 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.playlab.bussolaagil.R
 import com.playlab.bussolaagil.components.DialogAlert
-import com.playlab.bussolaagil.screens.ScreenRoutes
 import com.playlab.bussolaagil.util.getDirectionsLabel
 
 @Composable
@@ -23,7 +21,7 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     degrees: Int,
     isMagneticFieldSensorPresent: Boolean,
-    navController: NavController,
+    onMenuClick: () -> Unit = {},
     compassComposable: @Composable () -> Unit
     ) {
     Scaffold(
@@ -37,7 +35,7 @@ fun HomeScreen(
                 Icon(
                     modifier = Modifier.padding(16.dp)
                         .clickable {
-                            navController.navigate(ScreenRoutes.WidgetSelection.name)
+                            onMenuClick()
                         },
                     imageVector = Icons.Default.Menu,
                     contentDescription = stringResource(R.string.menu)
