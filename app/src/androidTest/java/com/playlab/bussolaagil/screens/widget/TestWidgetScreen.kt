@@ -9,8 +9,8 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.platform.app.InstrumentationRegistry
 import com.playlab.bussolaagil.DefaultNavHost
-import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
 import com.playlab.bussolaagil.R
+import com.playlab.bussolaagil.ui.theme.BussolaAgilTheme
 import org.junit.Rule
 import org.junit.Test
 
@@ -36,6 +36,7 @@ class TestWidgetScreen {
                DefaultNavHost(
                    degrees = 0,
                    isMagneticFieldSensorPresent = true,
+                   navController = navController
                )
             }
         }

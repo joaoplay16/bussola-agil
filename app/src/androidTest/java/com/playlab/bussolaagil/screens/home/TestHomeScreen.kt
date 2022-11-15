@@ -52,8 +52,11 @@ class TestHomeScreen {
                 navController = TestNavHostController(LocalContext.current)
                 navController.navigatorProvider.addNavigator(ComposeNavigator())
 
-               DefaultNavHost(degrees = 0, isMagneticFieldSensorPresent = true)
-
+               DefaultNavHost(
+                   degrees = 0,
+                   isMagneticFieldSensorPresent = true,
+                   navController = navController
+               )
             }
         }
 
