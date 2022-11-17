@@ -32,8 +32,17 @@ class TestRotation {
         val lastRotation = 400
 
         val newRotation = getRotation(degrees = 180, lastRotation = lastRotation)
-        println("newRotation $newRotation ${newRotation < lastRotation}")
 
         assertThat(newRotation).isGreaterThan(lastRotation)
+    }
+
+    @Test
+    fun `when rotation is going backward, returns decreased value` (){
+
+        val lastRotation = -400
+
+        val newRotation = getRotation(degrees = 180, lastRotation = lastRotation)
+
+        assertThat(newRotation).isLessThan(lastRotation)
     }
 }
