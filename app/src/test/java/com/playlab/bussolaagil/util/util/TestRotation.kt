@@ -15,4 +15,14 @@ class TestRotation {
 
         assertThat(lastRotation != 0).isTrue()
     }
+
+    @Test
+    fun `when there is no rotation, returns unmodified rotation` (){
+
+        var lastRotation = 0
+
+        lastRotation = getRotation(degrees = 0, lastRotation = lastRotation)
+
+        assertThat(lastRotation).isEqualTo(0)
+    }
 }
