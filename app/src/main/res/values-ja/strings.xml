@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rolling Compass</string>
+    <string name="northeast">北東</string>
+    <string name="east">東</string>
+    <string name="southeast">南東</string>
+    <string name="south">南</string>
+    <string name="west">西</string>
+    <string name="southwest">南西</string>
+    <string name="northwest">北西</string>
+    <string name="missing_sensor_error">このデバイスには磁場センサーが搭載されていないため、コンパスは機能しません</string>
+    <string name="widget">ウィジェット</string>
+    <string name="menu">メニュー</string>
+    <string name="back">戻る</string>
+    <string name="rate">評価してください</string>
+    <string name="north">北</string>
+</resources>
