@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rolling Compass</string>
+    <string name="app_name">コンパスウォーク</string>
     <string name="northeast">北東</string>
     <string name="east">東</string>
     <string name="southeast">南東</string>
