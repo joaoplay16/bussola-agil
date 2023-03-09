@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">कंपास वॉक</string>
+    <string name="northeast">"उत्तर-पूर्व "</string>
+    <string name="east">पूर्व</string>
+    <string name="southeast">दक्षिण-पूर्व</string>
+    <string name="south">दक्षिण</string>
+    <string name="west">पश्चिम</string>
+    <string name="southwest">दक्षिण-पश्चिम</string>
+    <string name="northwest">उत्तर-पश्चिम</string>
+    <string name="missing_sensor_error">इस डिवाइस में मैग्नेटिक फ़ील्ड सेंसर नहीं है, कंपास काम नहीं करेगा।</string>
+    <string name="widget">विजेट</string>
+    <string name="menu">मेनू</string>
+    <string name="back">वापस</string>
+    <string name="rate">"रेट करें "</string>
+    <string name="north">उत्तर</string>
+</resources>
