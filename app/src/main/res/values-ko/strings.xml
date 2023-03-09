@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">나침반워크</string>
+    <string name="northeast">북동</string>
+    <string name="east">동</string>
+    <string name="southeast">남동</string>
+    <string name="south">남</string>
+    <string name="west">서</string>
+    <string name="southwest">남서</string>
+    <string name="northwest">북서</string>
+    <string name="missing_sensor_error">이 기기에는 자기장 센서가 없어서 나침반이 작동하지 않습니다</string>
+    <string name="widget">위젯</string>
+    <string name="menu">메뉴</string>
+    <string name="back">뒤로</string>
+    <string name="rate">평가하기</string>
+    <string name="north">북</string>
+</resources>
