@@ -26,6 +26,8 @@ import com.playlab.bussolaagil.R
 import com.playlab.bussolaagil.components.MinimalCompass
 import com.playlab.bussolaagil.components.StyledCompass
 import com.playlab.bussolaagil.components.Widgets
+import com.playlab.bussolaagil.screens.ScreenRoutes
+import com.playlab.bussolaagil.service.FirebaseAnalytics
 
 @Composable
 fun WidgetScreen(
@@ -52,6 +54,11 @@ fun WidgetScreen(
             }
         }
     ) { padding ->
+
+        FirebaseAnalytics.logAnalyticsEvent(com.google.firebase.analytics.FirebaseAnalytics.Event.SCREEN_VIEW){
+            param("Screen", ScreenRoutes.WidgetSelection.name)
+        }
+
         Surface() {
             Column(
                 modifier = modifier
@@ -72,7 +79,12 @@ fun WidgetScreen(
 
                 CompassWidget(
                     name = Widgets.MinimalCompass.name,
-                    onWidgetChoose = onWidgetChoose,
+                    onWidgetChoose = {
+                        onWidgetChoose(it)
+                        FirebaseAnalytics.logAnalyticsEvent("click"){
+                            param("widget", Widgets.MinimalCompass.name)
+                        }
+                    },
                 ) {
                     MinimalCompass()
                 }
@@ -81,7 +93,12 @@ fun WidgetScreen(
 
                 CompassWidget(
                     name = Widgets.StyledCompass.name,
-                    onWidgetChoose = onWidgetChoose
+                    onWidgetChoose = {
+                        onWidgetChoose(it)
+                        FirebaseAnalytics.logAnalyticsEvent("click"){
+                            param("widget", Widgets.StyledCompass.name)
+                        }
+                    }
                 ) {
                     StyledCompass(size = 250.dp)
                 }
@@ -96,15 +113,21 @@ fun WidgetScreen(
                             val appPackageName = BuildConfig.APPLICATION_ID
                             val playstoreIntent = Intent(
                                 Intent.ACTION_VIEW,
-                                Uri.parse("market://details?id=${appPackageName}"))
+                                Uri.parse("market://details?id=${appPackageName}")
+                            )
                             val browserIntent = Intent(
                                 Intent.ACTION_VIEW,
-                                Uri.parse("https://play.google.com/store/apps/details?id=${appPackageName}"))
+                                Uri.parse("https://play.google.com/store/apps/details?id=${appPackageName}")
+                            )
 
                             try {
                                 context.startActivity(playstoreIntent)
-                            }catch (e: ActivityNotFoundException){
+                            } catch (e: ActivityNotFoundException) {
                                 context.startActivity(browserIntent)
+                            }
+
+                            FirebaseAnalytics.logAnalyticsEvent("click") {
+                                param("button", "Button (Rate)")
                             }
                         }
                         .fillMaxWidth(0.5f)
