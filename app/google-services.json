@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "921947008829",
+    "project_id": "rolling-compass",
+    "storage_bucket": "rolling-compass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921947008829:android:cc6b4712035596de5f5f54",
+        "android_client_info": {
+          "package_name": "com.playlab.bussolaagil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921947008829-q9ndelhh62v7f8ndn0ru4sr7j5r2u42k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMom-E9SK8a7_PIoXifzclYqcBNzH5eZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921947008829-q9ndelhh62v7f8ndn0ru4sr7j5r2u42k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
