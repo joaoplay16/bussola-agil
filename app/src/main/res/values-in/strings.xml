@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kompas Berjalan</string>
+    <string name="north">N</string>
+    <string name="northeast">TL</string>
+    <string name="east">T</string>
+    <string name="southeast">TG</string>
+    <string name="south">S</string>
+    <string name="west">B</string>
+    <string name="southwest">BD</string>
+    <string name="northwest">BL</string>
+    <string name="missing_sensor_error">Perangkat ini tidak dilengkapi dengan sensor medan magnetik, kompas tidak akan berfungsi.</string>
+    <string name="widget">WIDGET</string>
+    <string name="menu">Menu</string>
+    <string name="back">Kembali</string>
+    <string name="rate">Beri kami rating</string>
+</resources>
