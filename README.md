@@ -1,6 +1,6 @@
 
-[![LinkedIn][linkedin-shield]][linkedin-url] [![Apache License][license-shield]][license-url] [![Google Play][googleplay-downloads-shield]][googleplay-url]
-
+[![en](https://img.shields.io/badge/lang-ptBr-yellow.svg)](https://github.com/joaoplay16/bussola-agil/blob/main/README.ptBr.md) [![Apache License][license-shield]][license-url] [![Google Play][googleplay-downloads-shield]][googleplay-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] 
 # Rolling Compass
 
 Rolling Compass is a simple and accurate compass app with a beautiful and modern design with different compass styles. Developed in Kotlin, using the Jetpack Compose UI kit.
