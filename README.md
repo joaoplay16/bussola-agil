@@ -12,8 +12,8 @@ To save the user's selected compass widget,  **DataStore** was used as a data st
 ## Screenshots
 <p>
 <a href="https://play.google.com/store/apps/details?id=com.playlab.bussolaagil" target="_blank">
-<img width="260" src="https://i.imgur.com/ftZOjr4.gif"/>
-<img width="260" src="https://i.imgur.com/UX9leiD.gif"/>
+<img width="260" src="https://s11.gifyu.com/images/bussola_agil_light.gif"/>
+<img width="260" src="https://s11.gifyu.com/images/bussola_agil_dark.gif"/>
 <img width="260" src="https://i.imgur.com/oFispGW.jpg"/>
 <img width="260" src="https://i.imgur.com/P0teVQp.jpg"/>
 </a>
