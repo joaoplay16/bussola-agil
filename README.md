@@ -10,11 +10,12 @@ For this project, the **SensorManager** class was used  to access the device's g
 To save the user's selected compass widget,  **DataStore** was used as a data storage solution.
 
 ## Screenshots
+<p>
 <img width="260" src="https://github.com/joaoplay16/bussola-agil/raw/main/images/home_dark.gif"/>
-
+<img width="260" src="https://github.com/joaoplay16/bussola-agil/raw/main/images/home_dark.gif"/>
+</p>
 <p>
 <a href="https://play.google.com/store/apps/details?id=com.playlab.bussolaagil" target="_blank">
-<img width="260" src="https://github.com/joaoplay16/bussola-agil/raw/main/images/home_dark.gif"/>
 <img width="260" src="https://github.com/joaoplay16/bussola-agil/raw/main/images/home_light.gif"/>
 <img width="260" style="max-width: 100%; display: inline-block;" src="https://github.com/joaoplay16/bussola-agil/blob/main/images/widget_light.jpg?raw=true"/>
 <img width="260" style="max-width: 100%; display: inline-block;" src="https://github.com/joaoplay16/bussola-agil/blob/main/images/widget_dark.jpg?raw=true"/>
