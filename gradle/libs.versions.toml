@@ -42,7 +42,7 @@ ksp = "1.9.20-1.0.14"
 maps-compose = "2.5.3"
 material = "1.11.0"
 # @keep
-minSdk = "22"
+minSdk = "21"
 okhttp = "4.10.0"
 # @keep
 targetSdk = "34"
