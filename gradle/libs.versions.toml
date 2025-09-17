@@ -48,6 +48,7 @@ okhttp = "4.10.0"
 targetSdk = "36"
 version-catalog-update = "0.8.0"
 espressoCore = "3.7.0"
+pluginCompose = "2.2.20"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -96,6 +97,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "pluginCompose" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServicesPlugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlyticsPlugin" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
