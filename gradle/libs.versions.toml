@@ -48,7 +48,7 @@ okhttp = "4.10.0"
 targetSdk = "36"
 version-catalog-update = "0.8.0"
 espressoCore = "3.7.0"
-pluginCompose = "2.2.20"
+pluginCompose = "2.3.10"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
